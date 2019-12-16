@@ -24,6 +24,7 @@ library
                      , random
                      , bytestring
                      , text
+                     , transformers
   default-language:    Haskell2010
 
 executable shorturls-exe
