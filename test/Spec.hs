@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings, QuasiQuotes #-}
 module Main (main) where
 
+import           Data.Monoid ((<>))
 import           Test.Hspec
 import           Test.Hspec.Wai
 import           Network.HTTP.Types.Header
