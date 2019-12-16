@@ -7,6 +7,7 @@ import           Control.Monad
 import           Control.Monad.IO.Class
 import qualified Data.ByteString.Char8 as B8
 import           Data.Maybe
+import           Data.Monoid ((<>))
 import qualified Data.Text.Encoding as TE
 import qualified Data.Text.Lazy as TL
 import qualified Database.Redis as Hedis
