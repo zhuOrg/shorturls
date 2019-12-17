@@ -14,7 +14,8 @@ jobs:
         nix-env -f https://github.com/NixOS/nixpkgs-channels/archive/nixos-17.09.tar.gz -iA redis
         redis-server &
     - run: |
-        redis-cli -p 6379 info | grep 'config_file'
+        redis-cli -p 6379 info
+        redis-cli -p 6379 CONFIG GET dir
 #        redis-cli -s /tmp/redis.sock
 #        nix-build -I nixpkgs=https://github.com/NixOS/nixpkgs-channels/archive/nixos-17.09.tar.gz
     - run: redis-cli shutdown
