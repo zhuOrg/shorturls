@@ -14,7 +14,7 @@ import qualified Data.ByteString.Lazy.Char8 as BL8
 
 main :: IO ()
 main = do
-  connpool <- Hedis.checkedConnect Hedis.defaultConnectInfo { connectPort = PortNumber 6379 }
+  connpool <- Hedis.checkedConnect Hedis.defaultConnectInfo { connectPort = Hedis.PortNumber 6379 }
   hspec 
     $ before (flushRedis connpool) 
     $ afterAll_ (flushRedis connpool)
@@ -22,7 +22,7 @@ main = do
 
 flushRedis :: Hedis.Connection -> IO ()
 flushRedis connpool = do
-  connpool <- Hedis.checkedConnect Hedis.defaultConnectInfo { connectPort = PortNumber 6379 }
+  connpool <- Hedis.checkedConnect Hedis.defaultConnectInfo { connectPort = Hedis.PortNumber 6379 }
   Hedis.runRedis connpool Hedis.flushall >> return ()
 
 spec :: Hedis.Connection -> Spec
