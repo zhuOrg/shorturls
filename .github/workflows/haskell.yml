@@ -14,7 +14,7 @@ jobs:
         nix-env -f https://github.com/NixOS/nixpkgs-channels/archive/nixos-17.09.tar.gz -iA redis
         redis-server &
         sleep 3s
-        redis-cli
+    - run: redis-cli ping
 #        nix-build -I nixpkgs=https://github.com/NixOS/nixpkgs-channels/archive/nixos-17.09.tar.gz
     - run: redis-cli shutdown
      
