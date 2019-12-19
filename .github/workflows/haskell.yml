@@ -5,42 +5,24 @@ on:
   push:
 
 jobs:
-  tests:
+  vm-job:
     runs-on: ubuntu-latest
+
+    services:
+      redis:
+        image: redis
+        ports:
+        - 6379/tcp
+        options: --entrypoint redis-server
+
     steps:
     - uses: actions/checkout@v1
     - uses: cachix/install-nix-action@v6
-    - run: |
-        nix-env -f https://github.com/NixOS/nixpkgs-channels/archive/nixos-17.09.tar.gz -iA redis
-        redis-server --daemonize yes --protected-mode no
-        nix-build
+    - uses: cachix/cachix-action@v2
+      with:
+        name: 573-ci
+        signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
+# https://github.com/actions/example-services/blob/master/.github/workflows/redis-service.yml uses - run: ... with a working-directory: ./redis here which is not allowed for cachix-action, would need to have an extra run: step as with cachix/install-nix-action@v6
       env:
-        CI: true
-    - run: redis-cli ping
-#    - uses: cachix/cachix-action@v2
-#      with:
-#        name: 573-ci
-#        signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
-#    - run: redis-cli ping
-    - run: redis-cli shutdown
-     
-#  build:
-
-#    runs-on: ubuntu-latest
-
-#    steps:
-#    - uses: actions/checkout@v1
-#    - uses: actions/setup-haskell@v1
-#      with:
-#        ghc-version: '8.6.5'
-#        cabal-version: '3.0'
-#    - name: Install dependencies
-#      run: |
-#        cabal update
-#        cabal install --only-dependencies --enable-tests
-#    - name: Build
-#      run: |
-#        cabal configure --enable-tests
-#        cabal build
-#    - name: Run tests
-#      run: cabal test
+        REDIS_HOST: localhost
+        REDIS_PORT: ${{ job.services.redis.ports[6379] }}
