@@ -13,12 +13,15 @@ jobs:
     - run: |
         nix-env -f https://github.com/NixOS/nixpkgs-channels/archive/nixos-17.09.tar.gz -iA redis
         redis-server --daemonize yes --protected-mode no
+        nix-build
+      env:
+        CI: true
     - run: redis-cli ping
-    - uses: cachix/cachix-action@v2
-      with:
-        name: 573-ci
-        signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
-    - run: redis-cli ping
+#    - uses: cachix/cachix-action@v2
+#      with:
+#        name: 573-ci
+#        signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
+#    - run: redis-cli ping
     - run: redis-cli shutdown
      
 #  build:
