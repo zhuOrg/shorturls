@@ -27,7 +27,7 @@ jobs:
         with:
           name: 573-ci
           signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
-# https://github.com/actions/example-services/blob/master/.github/workflows/redis-service.yml uses - run: ... with a working-directory: ./redis here which is not allowed for cachix-action, would need to have an extra run: step as with cachix/install-nix-action@v6
+# 2https://github.com/actions/example-services/blob/master/.github/workflows/redis-service.yml uses - run: ... with a working-directory: ./redis here which is not allowed for cachix-action, would need to have an extra run: step as with cachix/install-nix-action@v6
 #        env:
 #          REDIS_HOST: 127.0.0.1
 #          REDIS_PORT: 6379
