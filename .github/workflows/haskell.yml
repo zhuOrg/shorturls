@@ -16,7 +16,7 @@ jobs:
         options: --entrypoint "redis-server" redis redis.conf
 
     steps:
-#      - uses: shogo82148/actions-setup-redis@v1
+##      - uses: shogo82148/actions-setup-redis@v1
 #        with:
 #          redis-version: '5.x'
 #          auto-start: "true"  
