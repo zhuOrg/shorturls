@@ -22,7 +22,8 @@ jobs:
       - run: redis-cli ping
       - uses: actions/checkout@v1
       - uses: cachix/install-nix-action@v6
-      - run: echo "trusted-users = root $USER" | sudo tee -a /etc/nix/nix.conf && sudo pkill nix-daemon
+      - run: |
+           echo \"trusted-users = root $USER\" | sudo tee -a /etc/nix/nix.conf && sudo pkill nix-daemon
       - uses: cachix/cachix-action@v2
         with:
           name: 573-ci
