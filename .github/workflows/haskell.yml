@@ -7,7 +7,7 @@ on:
 jobs:
   vm-job:
     runs-on: self-hosted
-##    services:
+#    services:
 #       redis:
 #       image: redis
 #        ports:
