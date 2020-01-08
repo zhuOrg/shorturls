@@ -8,7 +8,7 @@ jobs:
   vm-job:
     runs-on: self-hosted
 ##    services:
-##       redis:
+#       redis:
 #       image: redis
 #        ports:
 #        - 6379/tcp
