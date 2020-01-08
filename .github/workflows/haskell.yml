@@ -8,8 +8,8 @@ jobs:
   vm-job:
     runs-on: self-hosted
 ##    services:
-##      redis:
-##        image: redis
+##       redis:
+#       image: redis
 #        ports:
 #        - 6379/tcp
 #        options: --entrypoint redis-server
