@@ -24,6 +24,9 @@ jobs:
       - uses: cachix/install-nix-action@v6
       - run: |
          echo trusted-users = root $USER | sudo tee -a /etc/nix/nix.conf
+      - run: |
+          mkdir -p ~/.config/nix
+          echo system-features = kvm nixos-test >> ~/.config/nix/nix.conf
       - uses: cachix/cachix-action@v2
         with:
           name: 573-ci
