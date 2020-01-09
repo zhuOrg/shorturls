@@ -15,10 +15,10 @@ jobs:
 #        options: --entrypoint redis-server
 
     steps:
-      - uses: shogo82148/actions-setup-redis@v1
-        with:
-          redis-version: '5.x'
-          auto-start: "true"  
+      #- uses: shogo82148/actions-setup-redis@v1
+      #  with:
+      #    redis-version: '5.x'
+      #    auto-start: "true"  
       - run: redis-cli ping
       - uses: actions/checkout@v1
       - uses: cachix/install-nix-action@v6
