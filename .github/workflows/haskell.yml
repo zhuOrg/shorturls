@@ -1,8 +1,6 @@
 name: Haskell CI
 
-on: 
-  pull_request:
-  push:
+on: check_suite
 
 jobs:
   tests:
