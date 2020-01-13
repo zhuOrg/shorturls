@@ -10,5 +10,12 @@ jobs:
       - run: |
 
          url="https://dl.bintray.com/kotlin/kotlin-dev/org/jetbrains/kotlin/kotlin-compiler/maven-metadata.xml"; echo "${url##*/}"
-     
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1.0.0
+        with:
+            # Artifact name
+          name: drop1
+           # Directory containing files to upload
+          path: maven-metadata.xml
          
+      
