@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v2
       - run:  |
                sudo mkdir -p /home/azure/actions-runner/_work/shorturls/log4
-               touch /home/azure/actions-runner/_work/shorturls/log4/text123.txt
+               sudo touch /home/azure/actions-runner/_work/shorturls/log4/text123.txt
                chmod -R 757 /home/azure/actions-runner/_work/shorturls/
       - name: Upload artifact
         uses: actions/upload-artifact@v1.0.0
