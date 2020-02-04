@@ -4,11 +4,16 @@ on: push
    
 jobs:
   job1:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
       - run: |
            sudo mkdir log
            echo 'hello' tee /log/hello.log > sudo
         working-directory: ../
+  job2:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2 
+      
       
