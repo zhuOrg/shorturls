@@ -7,9 +7,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
-      - run: |
-           sudo mkdir log1
-           echo 'hello' tee /log/hello.log > sudo
+      - run:      sudo mkdir log1 & echo 'hello' tee /log/hello.log > sudo
         working-directory: ../
   job2:
     runs-on: self-hosted
