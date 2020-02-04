@@ -7,14 +7,14 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
-      - run:      sudo mkdir log3 & echo 'hello' tee /log3/hello.log > sudo
-        working-directory: /home/azure/actions-runner/_work/shorturls
+      - run:  |
+               sudo mkdir -p /home/azure/actions-runner/_work/shorturls/log4
+               touch /home/azure/actions-runner/_work/shorturls/log4/text123.txt
+               chmod -R 757 /home/azure/actions-runner/_work/shorturls/
       - name: Upload artifact
         uses: actions/upload-artifact@v1.0.0
         with:
-    # Artifact name
          name: drop1
-    # Directory containing files to upload
          path: /home/azure/actions-runner/_work/shorturls
   job2:
     needs: job1
