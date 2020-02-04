@@ -8,14 +8,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run:      sudo mkdir log3 & echo 'hello' tee /log3/hello.log > sudo
-        working-directory: ../
+        working-directory: /home/azure/actions-runner/_work/shorturls
       - name: Upload artifact
         uses: actions/upload-artifact@v1.0.0
         with:
     # Artifact name
          name: drop1
     # Directory containing files to upload
-         path: ../log3
+         path: /home/azure/actions-runner/_work/shorturls
   job2:
     needs: job1
     runs-on: self-hosted
