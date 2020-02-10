@@ -1,21 +1,18 @@
+name: Firefox
 
-name: main
 on: push
-   
-jobs:
-  job1:
-    runs-on: self-hosted
-    steps:
-      - uses: actions/checkout@v2
-      - run:  |
-               sudo mkdir -p /home/azure/actions-runner/_work/shorturls/log5
-               sudo touch /home/azure/actions-runner/_work/shorturls/log5/text123.txt
-             
 
-  job2:
-    needs: job1
-    runs-on: self-hosted
+jobs:
+  # hmm, seems when using container (that should have FF installed)
+  # Cypress cannot find Firefox. This job just prints browser versions
+  check-firefox:
+    runs-on: ubuntu-latest
+    # https://github.com/cypress-io/cypress-docker-images
+    container: cypress/browsers:node13.6.0-chrome80-ff72
     steps:
-      - uses: actions/checkout@v1
-      
+      # help us who how we are running in the container
+      - run: whoami
+      - run: id
+      - run: google-chrome --version
+      - run: firefox --version
       
