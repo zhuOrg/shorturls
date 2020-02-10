@@ -14,5 +14,11 @@ jobs:
       - run: whoami
       - run: id
       - run: google-chrome --version
-      - run: firefox --version
+      - run: | 
+          sudo -i
+          test -f .Xauthority && mv .Xauthority .Xauthority.bak
+          cp -a /home/runner/.Xauthority .Xauthority
+          chown root: .Xauthority  
+          XAUTHORITY=/root/.Xauthority sudo firefox
+          firefox --version
       
