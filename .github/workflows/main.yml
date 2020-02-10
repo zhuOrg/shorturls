@@ -6,18 +6,15 @@ jobs:
   # hmm, seems when using container (that should have FF installed)
   # Cypress cannot find Firefox. This job just prints browser versions
   check-firefox:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     # https://github.com/cypress-io/cypress-docker-images
-    container: cypress/browsers:node13.6.0-chrome80-ff72
+    #container: cypress/browsers:node13.6.0-chrome80-ff72
     steps:
       # help us who how we are running in the container
       - run: whoami
       - run: id
       - run: google-chrome --version
       - run: | 
-          test -f .Xauthority && mv .Xauthority .Xauthority.bak
-          cp -a /home/runner/.Xauthority .Xauthority
-          chown root: .Xauthority  
-          XAUTHORITY=/root/.Xauthority sudo firefox
+          
           firefox --version
       
