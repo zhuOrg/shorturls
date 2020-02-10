@@ -15,7 +15,6 @@ jobs:
       - run: id
       - run: google-chrome --version
       - run: | 
-          sudo -i
           test -f .Xauthority && mv .Xauthority .Xauthority.bak
           cp -a /home/runner/.Xauthority .Xauthority
           chown root: .Xauthority  
